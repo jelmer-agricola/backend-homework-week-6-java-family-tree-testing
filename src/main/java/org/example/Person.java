@@ -60,9 +60,9 @@ public Person(String name, String lastname, int age, String sex) {
         person.setPets(pets);
     }
 
-    public void addSibling(Person person, Person sibling){
+    public void addSibling(Person person, Person sibling) {
         ArrayList<Person> family = new ArrayList<>();
-        if(person.getSiblings() != null){
+        if (person.getSiblings() != null) {
             for (Person people : person.getSiblings()) {
                 family.add(people);
             }
@@ -71,7 +71,19 @@ public Person(String name, String lastname, int age, String sex) {
         person.setSiblings(family);
     }
 
-
+    public ArrayList<Person> getGrandChildren(Person person){
+        ArrayList<Person> grandChildren = new ArrayList<>();
+        if(person.getChildren() != null){
+            for (Person children : person.getChildren()) {
+                if(children.getChildren() != null){
+                    for (Person grandKid : children.getChildren()) {
+                        grandChildren.add(grandKid);
+                    }
+                }
+            }
+        }
+        return grandChildren;
+    }
 
 
 
